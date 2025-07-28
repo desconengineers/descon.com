@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descon Consultant and Builders</title>
+    <style>
+        body {
+            margin: 0;
+            background: #f7f7f7;
+            font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(90deg, #f7f7f7 70%, #ffe5d0 100%);
+            padding: 18px 48px;
+            border-radius: 0 0 18px 18px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 10;
+        }
+        .logo-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-title img {
+            height: 54px;
+            margin-right: 10px;
+            filter: drop-shadow(0 2px 4px rgba(206,22,22,0.15));
+            transition: transform 0.2s;
+        }
+        .logo-title img:hover {
+            transform: scale(1.07) rotate(-4deg);
+        }
+        .title {
+            font-size: 2.3rem;
+            color: #d60909;
+            font-weight: 900;
+            letter-spacing: 6px;
+            text-shadow: 1px 2px 8px #fff2e0;
+            margin-bottom: -4px;
+        }
+        .subtitle {
+            font-size: 1.1rem;
+            color: #222;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+        .nav {
+            display: flex;
+            gap: 22px;
+        }
+        .nav-btn {
+            background: none;
+            border: none;
+            color: #222;
+            font-weight: 700;
+            font-size: 1.08rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            padding: 6px 0;
+            position: relative;
+            transition: color 0.2s;
+            outline: none;
+            text-decoration: none; /* Add this line */
+        }
+        .nav-btn.active,
+        .nav-btn:hover {
+            color: #ff6600;
+        }
+        .nav-btn.active::after,
+        .nav-btn:hover::after {
+            content: '';
+            display: block;
+            height: 3px;
+            width: 100%;
+            background: linear-gradient(90deg,#ff6600 60%,#ce1616 100%);
+            border-radius: 2px;
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            transition: width 0.2s;
+        }
+        .footer {
+            background: #181818;
+            color: #fff;
+            padding: 40px 0 30px 0;
+            font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+        }
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: auto;
+            gap: 100px;
+        }
+        .footer-section {
+            flex: 1 1 220px;
+            min-width: 220px;
+        }
+        .footer-logo {
+            height: 60px;
+            margin-bottom: 16px;
+        }
+        .footer-section h3 {
+            color: #d81fad;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+            text-align: center; /* Center the heading */
+        }
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-section ul li {
+            margin-bottom: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .industries div {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .industries img {
+            width: 48px;
+            height: 38px;
+            object-fit: cover;
+            margin-right: 10px;
+            border-radius: 4px;
+        }
+        .industries span {
+            font-size: 0.98rem;
+        }
+        .address-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+        .footer-icon {
+            display: inline-block;
+            background: #333;
+            color: #ff6600;
+            font-size: 1.2rem;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            text-align: center;
+            line-height: 32px;
+            margin-right: 10px;
+        }
+        .footer-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center; /* Center the buttons horizontally */
+        }
+        .footer-nav .nav-btn {
+            display: inline-block;
+            width: auto;
+            text-align: center;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-weight: 300;
+            font-size: 1.08rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            padding: 6px 22px; /* Add horizontal padding for better look */
+            position: relative;
+            transition: color 0.2s;
+            outline: none;
+            text-decoration: none; /* Remove underline */
+        }
+        .footer-nav .nav-btn:hover,
+        .footer-nav .nav-btn.active {
+            color: #ff6600;
+        }
+        .footer-nav .nav-btn.active::after,
+        .footer-nav .nav-btn:hover::after {
+            content: '';
+            display: block;
+            height: 3px;
+            width: 100%;
+            background: linear-gradient(90deg,#ff6600 60%,#ce1616 100%);
+            border-radius: 2px;
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            transition: width 0.2s;
+        }
+        .main-center {
+            max-width: 700px;
+            margin: 40px auto 60px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+            padding: 40px 32px;
+            text-align: center;
+        }
+        .main-center h1 {
+            font-size: 2.2rem;
+            color: #d60909;
+            margin-bottom: 18px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+        .main-center p {
+            font-size: 1.15rem;
+            color: #222;
+            margin-bottom: 28px;
+            line-height: 1.6;
+        }
+        .main-actions {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+        }
+        .main-actions .nav-btn {
+            background: linear-gradient(90deg,#ff6600 60%,#ce1616 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.08rem;
+            padding: 10px 28px;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            text-decoration: none;
+        }
+        .main-actions .nav-btn:hover {
+            background: linear-gradient(90deg,#ce1616 60%,#ff6600 100%);
+            color: #fff;
+        }
+        @media (max-width: 900px) {
+            .footer-container {
+                flex-direction: column;
+                gap: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-title">
+            <img src="image/Logo.png" alt="Logo">
+            <div>
+                <div class="title">DESCON </div>
+                <div class="subtitle">CONSULTANT AND BUILDERS</div>
+            </div>
+        </div>
+        <nav class="nav">
+            <a href="index.html" class="nav-btn active">HOME</a>
+            <a href="about.html" class="nav-btn">ABOUT US</a>
+            <a href="coreteam.html" class="nav-btn">CORE TEAM</a>
+            <a href="projects.html" class="nav-btn">PROJECTS</a>
+            <a href="clients.html" class="nav-btn">CLIENTS</a>
+            <a href="contact.html" class="nav-btn">CONTACT US</a>
+            <a href="login.html" class="nav-btn">LOGIN</a>
+        </nav>
+    </div>
+    <main class="main-center">
+        <h1>Welcome to Descon Consultant and Builders</h1>
+        <p>
+            We specialize in Electrical Utility Shifting Work for Road Widening Projects of NHAI, with expertise in UP and UK. Our team consists of experienced technocrats dedicated to delivering quality and innovation in every project.
+        </p>
+        <div class="main-actions">
+            <a href="projects.html" class="nav-btn">View Projects</a>
+            <a href="contact.html" class="nav-btn">Contact Us</a>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <img src="image/Logo.png" alt="Logo" class="footer-logo">
+                <p>
+                    We are interested for Electrical Utility Shifting Work for Road Widening Projects of NHAI preferably in UP and UK. We are having profound technocrats in the same field who are associated with us.
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>QUICK LINKS</h3>
+                <div class="footer-nav">
+                    <a href="index.html" class="nav-btn">HOME</a>
+                    <a href="coreteam.html" class="nav-btn">CORE TEAM</a>
+                    <a href="projects.html" class="nav-btn">PROJECTS</a>
+                    <a href="clients.html" class="nav-btn">CLIENTS</a>
+                    <a href="contact.html" class="nav-btn">CONTACT US</a>
+                    <a href="login.html" class="nav-btn">LOGIN</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>INDUSTRIES WE SERVE</h3>
+                <div class="industries">
+                    <div><img src="image/petrochemical.jpg" alt=""><span>Petrochemical</span></div>
+                    <div><img src="image/gas.jpg" alt=""><span>Gas Utility Line works</span></div>
+                    <div><img src="image/power.jpg" alt=""><span>Power Plants</span></div>
+                    <div><img src="image/electrical.jpg" alt=""><span>Electrical Utility Works</span></div>
+                    <div><img src="image/substation.jpg" alt=""><span>33/11 Sub station works</span></div>
+                    <div><img src="image/refineries.jpg" alt=""><span>Refineries</span></div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>ADDRESS</h3>
+                <div class="address-item">
+                    <span class="footer-icon">🏠</span>
+                    <span>128/K - 189, 'K' Block, Kidwai Nagar Kanpur - 208011 U.P.</span>
+                </div>
+                <div class="address-item">
+                    <span class="footer-icon">📞</span>
+                    <span>+91 - 9415052457</span>
+                </div>
+                <div class="address-item">
+                    <span class="footer-icon">✉️</span>
+                    <span>desconengineers2012@gmail.com</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
